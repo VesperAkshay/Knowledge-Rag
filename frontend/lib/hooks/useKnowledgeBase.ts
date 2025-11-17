@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { KnowledgeBaseInfo } from "../types";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export function useKnowledgeBase() {
   const [info, setInfo] = useState<KnowledgeBaseInfo | null>(null);

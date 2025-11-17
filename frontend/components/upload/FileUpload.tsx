@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Upload, File, Loader2, CheckCircle2, XCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:8000/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface FileUploadProps {
   onUploadComplete: () => void;
