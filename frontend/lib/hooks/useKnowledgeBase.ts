@@ -9,7 +9,7 @@ export function useKnowledgeBase() {
 
   const fetchInfo = async () => {
     try {
-      const response = await fetch(`${API_BASE}/info`, {
+      const response = await fetch(`${API_BASE}/api/info`, {
         credentials: "include",
       });
       if (response.ok) {

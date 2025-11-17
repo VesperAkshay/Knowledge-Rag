@@ -26,7 +26,7 @@ export function FileUpload({ onUploadComplete }: FileUploadProps) {
     formData.append("file", file);
 
     try {
-      const response = await fetch(`${API_BASE}/upload-file`, {
+      const response = await fetch(`${API_BASE}/api/upload-file`, {
         method: "POST",
         body: formData,
         credentials: "include",

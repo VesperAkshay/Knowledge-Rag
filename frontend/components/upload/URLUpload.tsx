@@ -26,10 +26,10 @@ export function URLUpload({ onUploadComplete }: URLUploadProps) {
     setMessage("");
 
     try {
-      const response = await fetch(`${API_BASE}/upload-url`, {
+      const response = await fetch(`${API_BASE}/api/upload-url`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url: url }),
         credentials: "include",
       });
 
