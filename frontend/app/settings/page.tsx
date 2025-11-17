@@ -30,7 +30,8 @@ export default function SettingsPage() {
     // Load existing credentials metadata (for tenant/database defaults)
     const loadCredentials = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/auth/credentials', {
+        const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+        const response = await fetch(`${API_BASE}/api/auth/credentials`, {
           credentials: 'include'
         });
 
