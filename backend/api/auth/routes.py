@@ -50,13 +50,14 @@ async def login(request: LoginRequest, response: Response):
     if not result["success"]:
         raise HTTPException(status_code=401, detail=result["error"])
     
-    # Set session cookie
+    # Set session cookie (cross-origin compatible)
     response.set_cookie(
         key="session_id",
         value=result["session_id"],
         httponly=True,
         max_age=86400,  # 24 hours
-        samesite="lax"
+        samesite="none",  # Required for cross-origin
+        secure=True  # Required with samesite=none (HTTPS only)
     )
     
     return {
@@ -73,7 +74,11 @@ async def logout(response: Response, session_id: Optional[str] = Cookie(None)):
     if session_id:
         auth_service.logout(session_id)
     
-    response.delete_cookie("session_id")
+    response.delete_cookie(
+        "session_id",
+        samesite="none",
+        secure=True
+    )
     return {"success": True}
 
 

@@ -36,8 +36,12 @@ class Settings:
     # Database name (for logging)
     DATABASE_NAME: str = os.environ.get("CHROMADB_DATABASE", "Rag-Knoeledge")
     
-    # CORS Settings
-    CORS_ORIGINS: list = ["*"]
+    # CORS Settings - Allow frontend origins
+    FRONTEND_URL: str = os.environ.get("FRONTEND_URL", "http://localhost:3000")
+    CORS_ORIGINS: list = [
+        "http://localhost:3000",  # Local development
+        os.environ.get("FRONTEND_URL", ""),  # Production frontend
+    ]
     
     # Application Info
     APP_TITLE: str = "Orchestrator RAG Knowledge Base"
